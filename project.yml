@@ -1,1 +1,34 @@
-# Hello World!
+name: HelloWorld
+
+options:
+  bundleIdPrefix: ca.andrewvtan
+
+settings:
+  MARKETING_VERSION: "0.0"
+  CURRENT_PROJECT_VERSION: "0"
+
+targets:
+  HelloWorld:
+    settings:
+      VALIDATE_WORKSPACE: NO
+      PRODUCT_BUNDLE_IDENTIFIER: ca.andrewvtan.helloworld
+      INFOPLIST_PREPROCESS: YES
+      INFOPLIST_FILE: HelloWorld/Info.plist
+      INFOPLIST_OTHER_PREPROCESSOR_FLAGS: -traditional
+      ENABLE_BITCODE: NO
+      HEADER_SEARCH_PATHS:
+        - $(SRCROOT)/contrib/ios_system/ios_system
+    info:
+      path: HelloWorld/Info.plist
+      properties:
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+    platform: iOS
+    type: application
+    deploymentTarget: "15.0"
+    sources:
+      - path: contrib/lua
+        excludes: [.git]
+    dependencies:
+      - framework: contrib/ios_system/.build/ios_system.xcframework
+        embed: true
