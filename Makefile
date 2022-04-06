@@ -2,7 +2,7 @@ CONTRIB_DIR=contrib
 
 .PHONY: download-lua
 download-lua:
-	mdkir -p $(CONTRIB_DIR)
+	mkdir -p $(CONTRIB_DIR)
 	cd $(CONTRIB_DIR) && git clone https://github.com/lua/lua.git
 	cd $(CONTRIB_DIR)/lua && git checkout v5.3.4 
 	cd $(CONTRIB_DIR)/lua && curl -OL https://github.com/holzschu/ios_system/releases/download/v3.0.0/ios_error.h
